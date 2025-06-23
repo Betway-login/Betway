@@ -1,0 +1,107 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: #000;
+  padding: 15px;
+  align-items: center;
+}
+
+.header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.header button {
+  margin-left: 10px;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-btn {
+  background: #fff;
+  color: #000;
+}
+
+.signup-btn {
+  background: #28a745;
+  color: #fff;
+}
+
+.container {
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  margin: 40px auto;
+  border-radius: 8px;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.container h2 {
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+.container label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+.container input {
+  width: 92%;
+  padding: 11px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.container .text-link {
+  text-align: right;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.container .text-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.container button {
+  width: 100%;
+  padding: 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.bottom a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.disclaimer {
+  color: #aaa;
+  font-size: 12px;
+  max-width: 400px;
+  margin: 0 auto 40px;
+  text-align: center;
+  line-height: 1.6;
+}
