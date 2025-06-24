@@ -13,13 +13,23 @@ body {
   align-items: center;
 }
 
-.header .logo {
+.logo {
   font-size: 24px;
   font-weight: bold;
   color: #fff;
+  display: flex;
+  align-items: center;
 }
 
-.header .header-buttons {
+.menu-icon {
+  font-size: 23px;
+  margin-right: 10px;
+  cursor: pointer;
+  color: #fff;
+  vertical-align: middle;
+}
+
+.header-buttons {
   display: flex;
   gap: 10px;
 }
@@ -74,18 +84,18 @@ body {
   border-radius: 4px;
 }
 
-.container .text-link {
+.text-link {
   text-align: right;
   font-size: 14px;
   margin: 10px 0;
 }
 
-.container .text-link a {
+.text-link a {
   color: #007bff;
   text-decoration: none;
 }
 
-.container button {
+.container button[type="submit"] {
   width: 100%;
   padding: 12px;
   background: #28a745;
