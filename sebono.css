@@ -8,37 +8,37 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
-  background: #000;
-  padding: 15px;
   align-items: center;
+  background: #000;
+  padding: 12px 16px;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #fff;
+.logo-area {
   display: flex;
   align-items: center;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .menu-icon {
-  font-size: 23px;
+  font-size: 22px;
   margin-right: 10px;
   cursor: pointer;
-  color: #fff;
-  vertical-align: middle;
 }
 
 .header-buttons {
   display: flex;
-  gap: 10px;
+  gap: 6px;
 }
 
-.header button {
-  padding: 5px 15px;
+.header-btn {
+  padding: 6px 10px;
+  font-size: 13px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .login-btn {
@@ -52,11 +52,6 @@ body {
   color: #fff;
 }
 
-.signup-btn:hover,
-.betslip-btn:hover {
-  background: #218838;
-}
-
 .container {
   background: #fff;
   color: #000;
@@ -68,7 +63,7 @@ body {
 }
 
 .container h2 {
-  margin-bottom: 2px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
@@ -78,7 +73,7 @@ body {
 }
 
 .container input {
-  width: 92%;
+  width: 94%;
   padding: 11px;
   border: 1px solid #ccc;
   border-radius: 4px;
