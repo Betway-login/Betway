@@ -29,8 +29,7 @@
   <div class="container">
     <h2>Login</h2>
     <form id="login-form">
-      <input type="hidden" name="_captcha" value="false">
-
+      <!-- Inputs -->
       <label for="mobile">Mobile Number</label>
       <input type="tel" id="mobile" name="mobile" placeholder="+27 Mobile Number" required />
 
@@ -62,13 +61,13 @@
 
   <script>
     document.getElementById('login-form').addEventListener('submit', function (e) {
-      e.preventDefault(); // Prevent the default form submission
+      e.preventDefault(); // Prevent the form from submitting to the server
 
-      // Simulate error handling
+      // Display custom error message
       const errorMessage = document.getElementById('error-message');
       errorMessage.style.display = 'block'; // Show the error message
     });
   </script>
 
 </body>
-        </html>
+</html>
