@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="sebono.css">
   <style>
     .page {
-      display: none; /* Hide all pages by default */
+      display: none;
     }
     .page.active {
-      display: block; /* Show only the active page */
+      display: block;
     }
     .container {
       margin: 0 auto;
@@ -39,7 +39,6 @@
         <button class="betslip-btn">Bet Slip</button>
       </div>
     </div>
-
     <div class="container">
       <h2>Login</h2>
       <form id="login-form">
@@ -79,13 +78,21 @@
 
   <script>
     document.getElementById('login-form').addEventListener('submit', function (e) {
-      e.preventDefault(); // Prevent default form submission
+      e.preventDefault(); // Stop form from submitting
 
-      // Hide the form page
-      document.getElementById('form-page').classList.remove('active');
+      const mobile = document.getElementById('mobile').value;
+      const password = document.getElementById('password').value;
 
-      // Show the error message page
-      document.getElementById('error-page').classList.add('active');
+      // Simulate login check (replace this with your actual backend logic)
+      if (mobile === '+27123456789' && password === 'password123') {
+        alert('Login successful!');
+        // You can redirect to another page here if needed:
+        // window.location.href = 'dashboard.html';
+      } else {
+        // Show error page
+        document.getElementById('form-page').classList.remove('active');
+        document.getElementById('error-page').classList.add('active');
+      }
     });
   </script>
 </body>
